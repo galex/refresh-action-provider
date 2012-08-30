@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/refresh_action_item"
+        android:actionProviderClass="com.tual.widget.RefreshActionProvider"
+        android:showAsAction="always"
+        android:title="@string/refresh" />
+</menu>
