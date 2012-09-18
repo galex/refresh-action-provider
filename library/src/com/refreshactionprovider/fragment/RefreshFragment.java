@@ -9,6 +9,11 @@ import com.refreshactionprovider.R;
 import com.refreshactionprovider.widget.RefreshActionProvider;
 import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
 
+/**
+ * Refresh Fragment is a extendable class to use the RefreshActionProvider coupled with a clean loader management
+ * @author Alexandre Gherschon
+ *
+ */
 public abstract class RefreshFragment extends SherlockFragment {
 
 	private RefreshActionProvider refreshActionProvider;
