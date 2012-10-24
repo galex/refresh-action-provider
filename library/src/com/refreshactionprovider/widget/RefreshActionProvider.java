@@ -38,9 +38,6 @@ public class RefreshActionProvider extends ActionProvider {
 	public RefreshActionProvider(final Context context) {
 
 		super(context);
-		
-		Log.d("refresh","context class = " + context.getClass().getName());
-		
 
 		viewSwitcher = (ViewSwitcher) LayoutInflater.from(context).inflate(R.layout.refresh_action_item, null);
 

@@ -46,7 +46,6 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 		isLoading = true;
 		if (refreshActionProvider != null)
 			refreshActionProvider.showProgressBar();
-
 	}
 
 	protected void manageRefreshOnLoaderFinished() {
