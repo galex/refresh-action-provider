@@ -2,7 +2,6 @@ package com.refreshactionprovider.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,14 +30,16 @@ public class RefreshActionProvider extends ActionProvider {
 
 	private static final int BUTTON_VIEW = 0;
 	private static final int PROGRESS_VIEW = 1;
-
 	private OnRefreshListener onRefreshClickListener;
 	private ViewSwitcher viewSwitcher;
+	private CharSequence mTitle;
 
 	public RefreshActionProvider(final Context context) {
 
 		super(context);
-
+		
+		
+		
 		viewSwitcher = (ViewSwitcher) LayoutInflater.from(context).inflate(R.layout.refresh_action_item, null);
 
 		ImageButton refreshButton = (ImageButton) viewSwitcher.findViewById(R.id.refresh_button);
@@ -53,7 +54,6 @@ public class RefreshActionProvider extends ActionProvider {
 					onRefreshClickListener.onRefreshListener();
 			}
 		});
-
 		refreshButton.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
@@ -63,7 +63,6 @@ public class RefreshActionProvider extends ActionProvider {
 				return true;
 			}
 		});
-
 	}
 
 	@Override
@@ -99,9 +98,8 @@ public class RefreshActionProvider extends ActionProvider {
 		final int width = view.getWidth();
 		final int height = view.getHeight();
 		final int midy = screenPos[1] + height / 2;
-		final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
-
-		Toast cheatSheet = Toast.makeText(context, context.getString(R.string.refresh), Toast.LENGTH_SHORT);
+		final int screenWidth = context.getResources().getDisplayMetrics().widthPixels;		
+		Toast cheatSheet = Toast.makeText(context, mTitle, Toast.LENGTH_SHORT);
 		if (midy < displayFrame.height()) {
 			// Show along the top; follow action buttons
 			cheatSheet.setGravity(Gravity.TOP | Gravity.RIGHT, screenWidth - screenPos[0] - width / 2, height);
@@ -111,6 +109,10 @@ public class RefreshActionProvider extends ActionProvider {
 		}
 		cheatSheet.show();
 
+	}
+
+	public void setTitle(CharSequence title) {
+		mTitle = title;
 	}
 
 }

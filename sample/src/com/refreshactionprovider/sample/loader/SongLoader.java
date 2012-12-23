@@ -5,11 +5,9 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import com.refreshactionprovider.sample.util.HttpUtils;
-
 import android.content.Context;
-import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
+
+import com.refreshactionprovider.sample.util.HttpUtils;
 /**
  * Simple Song Loader 
  * @author Alexander Gherschon
@@ -17,8 +15,6 @@ import android.util.Log;
  */
 public class SongLoader extends AbstractAsyncTaskLoader<List<String>> {
 
-	private static final String TAG = "SongLoader";
-	
 	public SongLoader(Context context) {
 		super(context);
 	}
@@ -26,10 +22,7 @@ public class SongLoader extends AbstractAsyncTaskLoader<List<String>> {
 	@Override
 	public List<String> loadInBackground() {
 		
-		Log.d(TAG, "SongLoader");
-		
 		List<String> songs = null;
-		
 		try {
 			songs = HttpUtils.getListOfSongs();
 		} catch (IOException e) {
@@ -37,9 +30,6 @@ public class SongLoader extends AbstractAsyncTaskLoader<List<String>> {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 		return songs;
 	}
-
-	
 }

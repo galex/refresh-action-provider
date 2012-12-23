@@ -21,10 +21,8 @@ public class HttpUtils {
 
 	public static List<String> getListOfSongs() throws IOException, JSONException {
 
-		Log.d(TAG, "getListOfSongs");
-		
+		Log.i(TAG, "Downloading the stuff...");
 		List<String> songs = new ArrayList<String>();
-		
 		JSONArray jsonArray = new JSONArray(get("http://garage.ubiquoid.com/rodrigoygabriela.php"));
 		for(int i = 0; i < jsonArray.length() ; i++){
 			songs.add(jsonArray.getString(i));
@@ -37,7 +35,6 @@ public class HttpUtils {
 		String response;
 		URL url = new URL(address);
 		URLConnection urlConnection = url.openConnection();
-
 		InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 		try {
 			response = readStream(in);
