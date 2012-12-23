@@ -9,15 +9,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 
 import com.actionbarsherlock.app.SherlockListFragment;
-import com.refreshactionprovider.sample.R;
 import com.refreshactionprovider.sample.activity.ActivitiesListActivity;
 
 public class ActivitiesListFragment extends SherlockListFragment {
