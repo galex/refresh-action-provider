@@ -10,7 +10,7 @@ import com.refreshactionprovider.widget.RefreshActionProvider;
 import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
 
 /**
- * @author Alexandre Gherschon
+ * @author Alexander Gherschon
  *
  */
 public abstract class RefreshFragment extends SherlockFragment {
@@ -35,7 +35,7 @@ public abstract class RefreshFragment extends SherlockFragment {
 
 			@Override
 			public void onRefreshListener() {
-				forceLoad();
+				onRefresh();
 			}
 		});
 
@@ -44,8 +44,8 @@ public abstract class RefreshFragment extends SherlockFragment {
 
 		super.onCreateOptionsMenu(menu, inflater);
 	}
-
-	public void manageRefreshOnLoaderCreated() {
+	
+	public void startRefreshing() {
 
 		isLoading = true;
 		if (refreshActionProvider != null)
@@ -53,15 +53,12 @@ public abstract class RefreshFragment extends SherlockFragment {
 
 	}
 
-	public void manageRefreshOnLoaderFinished() {
+	public void stopRefreshing() {
 
 		isLoading = false;
-
 		if (refreshActionProvider != null)
 			refreshActionProvider.showButton();
 	}
 	
-
-	abstract void forceLoad();
-	abstract void load();
+	public abstract void onRefresh();
 }

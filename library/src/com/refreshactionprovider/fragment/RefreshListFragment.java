@@ -9,6 +9,10 @@ import com.refreshactionprovider.R;
 import com.refreshactionprovider.widget.RefreshActionProvider;
 import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
 
+/**
+ * @author Alexander Gherschon
+ *
+ */
 public abstract class RefreshListFragment extends SherlockListFragment {
 
 	private RefreshActionProvider refreshActionProvider;
@@ -31,7 +35,7 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 
 			@Override
 			public void onRefreshListener() {
-				forceLoad();
+				onRefresh();
 			}
 		});
 
@@ -40,15 +44,16 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 
 		super.onCreateOptionsMenu(menu, inflater);
 	}
-
-	protected void manageRefreshOnLoaderCreated() {
+	
+	public void startRefreshing() {
 
 		isLoading = true;
 		if (refreshActionProvider != null)
 			refreshActionProvider.showProgressBar();
+
 	}
 
-	protected void manageRefreshOnLoaderFinished() {
+	public void stopRefreshing() {
 
 		isLoading = false;
 
@@ -56,7 +61,5 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 			refreshActionProvider.showButton();
 	}
 	
-
-	protected abstract void forceLoad();
-	protected abstract void load();
+	protected abstract void onRefresh();
 }
