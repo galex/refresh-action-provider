@@ -26,11 +26,6 @@ public class SampleFragmentLoader extends RefreshListFragment implements LoaderC
 	private ArrayAdapter<String> mAdapter;
 	private View mProgressView;
 	
-	public static SampleFragmentLoader newInstance() {
-
-		return new SampleFragmentLoader();
-	}
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.list_fragment, container, false);
@@ -68,7 +63,6 @@ public class SampleFragmentLoader extends RefreshListFragment implements LoaderC
 	public void onLoaderReset(Loader<List<String>> loader) {
 		
 		mAdapter.clear();
-		loader.reset();
 	}
 
 	@Override
