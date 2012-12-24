@@ -86,7 +86,7 @@ public class RefreshActionProvider extends ActionProvider {
 	}
 
 	/** 
-	 * Slightly modified code from Jake Wharton's ABS
+	 * Slightly modified code, from Jake Wharton's ABS
 	 */
 	private void showCheatsheet(Context context, View view) {
 

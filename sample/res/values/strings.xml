@@ -1,8 +1,11 @@
 <resources>
 
     <string name="app_name">RefreshActionProviderSample</string>
-    <string name="activity_loader">Refreshable Fragment with a loader</string> 
-    <string name="activity_asyncTask">Refreshable Fragment with an asyncTask</string>
+    <string name="activity_loader">RefreshableListFragment, Loader, Custom Layout</string> 
+    <string name="activity_loader_default_layout">ListFragment, Loader, Default Layout</string> 
     <string name="progress">Loading...</string>
     <string name="empty">No songs :(</string>
+    
+    <string name="activity_asyncTask">RefreshableListFragment, AsyncTask, Custom Layout</string> 
+    <string name="activity_asyncTask_default_layout">ListFragment, AsyncTask, Default Layout</string>
 </resources>

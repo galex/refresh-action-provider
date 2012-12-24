@@ -33,7 +33,7 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 
 		MenuItem menuItem = menu.findItem(R.id.refresh_action_item);
 		mRefreshActionProvider = (RefreshActionProvider) menuItem.getActionProvider();
-		mRefreshActionProvider.setTitle(menuItem.getTitle()); // doesn't seems to get that value from inside the ActionProvider
+		mRefreshActionProvider.setTitle(menuItem.getTitle()); // doesn't seems to be possible to get that value from inside the ActionProvider
 		mRefreshActionProvider.setOnRefreshListener(new OnRefreshListener() {
 
 			@Override
@@ -45,19 +45,14 @@ public abstract class RefreshListFragment extends SherlockListFragment {
 		if (mIsLoading) mRefreshActionProvider.showProgressBar();
 		super.onCreateOptionsMenu(menu, inflater);
 	}
-
-	public void startRefreshing() {
-
-		mIsLoading = true;
-		if (mRefreshActionProvider != null)
-			mRefreshActionProvider.showProgressBar();
-	}
-
-	public void stopRefreshing() {
-
-		mIsLoading = false;
-		if (mRefreshActionProvider != null)
-			mRefreshActionProvider.showButton();
+	
+	public void setRefreshing(boolean isRefreshing){
+		
+		mIsLoading = isRefreshing;
+		if(mRefreshActionProvider != null){
+			if(mIsLoading) mRefreshActionProvider.showProgressBar();
+			else mRefreshActionProvider.showButton();
+		}
 	}
 
 	protected abstract void onRefresh();

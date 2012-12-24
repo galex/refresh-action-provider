@@ -16,7 +16,7 @@ import com.refreshactionprovider.fragment.RefreshListFragment;
 import com.refreshactionprovider.sample.R;
 import com.refreshactionprovider.sample.util.HttpUtils;
 /**
- * Sample fragment with the Refresh Action Provider and an AsyncTask
+ * RefreshableListFragment, AsyncTask, Custom Layout
  * @author Alexander Gherschon
  *
  */
@@ -51,7 +51,7 @@ public class SampleFragmentAsyncTask extends RefreshListFragment {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			startRefreshing();
+			setRefreshing(true);
 			mAdapter.clear();
 			mProgressView.setVisibility(View.VISIBLE);
 		}
@@ -74,7 +74,7 @@ public class SampleFragmentAsyncTask extends RefreshListFragment {
 		protected void onPostExecute(List<String> result) {
 		
 			super.onPostExecute(result);
-			stopRefreshing();
+			setRefreshing(false);
 			mProgressView.setVisibility(View.GONE);
 			mAdapter = new ArrayAdapter<String>(getSherlockActivity(), android.R.layout.simple_list_item_1, result);
 			setListAdapter(mAdapter);

@@ -23,18 +23,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name="com.refreshactionprovider.sample.activity.SampleActivityAsyncTask"
             android:label="@string/activity_asyncTask" >
         </activity>
-        
+        <!-- activity
+            android:name="com.refreshactionprovider.sample.activity.SampleActivityAsyncTaskDefaultLayout"
+            android:label="@string/activity_asyncTask_default_layout">
+        </activity  -->
         <activity
             android:name="com.refreshactionprovider.sample.activity.SampleActivityLoader"
             android:label="@string/activity_loader" >
-           
         </activity>
-        
+        <!-- activity
+            android:name="com.refreshactionprovider.sample.activity.SampleActivityLoaderDefaultLayout"
+            android:label="@string/activity_loader_default_layout">
+        </activity-->
     </application>
 
 </manifest>
