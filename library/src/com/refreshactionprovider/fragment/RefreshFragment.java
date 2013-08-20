@@ -1,7 +1,7 @@
 package com.refreshactionprovider.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,7 +15,7 @@ import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
  * @author Alexander Gherschon
  * 
  */
-public abstract class RefreshListFragment extends ListFragment {
+public abstract class RefreshFragment extends Fragment {
 
 	private RefreshActionProvider mRefreshActionProvider;
 	private boolean mIsLoading;
@@ -31,6 +31,7 @@ public abstract class RefreshListFragment extends ListFragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
 		inflater.inflate(R.menu.refresh_menu, menu);
+
 		MenuItem menuItem = menu.findItem(R.id.refresh_action_item);
 		mRefreshActionProvider = (RefreshActionProvider) MenuItemCompat.getActionProvider(menuItem);
 		mRefreshActionProvider.setTitle(menuItem.getTitle()); // doesn't seems to be possible to get that value from inside the ActionProvider

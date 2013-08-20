@@ -2,6 +2,7 @@ package com.refreshactionprovider.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.v4.view.ActionProvider;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.actionbarsherlock.view.ActionProvider;
 import com.refreshactionprovider.R;
 
 /**
@@ -33,17 +33,16 @@ public class RefreshActionProvider extends ActionProvider {
 	private OnRefreshListener onRefreshClickListener;
 	private ViewSwitcher viewSwitcher;
 	private CharSequence mTitle;
+	private ImageButton mRefreshButton;
 
 	public RefreshActionProvider(final Context context) {
 
 		super(context);
-		
-		
-		
+
 		viewSwitcher = (ViewSwitcher) LayoutInflater.from(context).inflate(R.layout.refresh_action_item, null);
 
-		ImageButton refreshButton = (ImageButton) viewSwitcher.findViewById(R.id.refresh_button);
-		refreshButton.setOnClickListener(new OnClickListener() {
+		mRefreshButton = (ImageButton) viewSwitcher.findViewById(R.id.refresh_button);
+		mRefreshButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -54,7 +53,7 @@ public class RefreshActionProvider extends ActionProvider {
 					onRefreshClickListener.onRefreshListener();
 			}
 		});
-		refreshButton.setOnLongClickListener(new OnLongClickListener() {
+		mRefreshButton.setOnLongClickListener(new OnLongClickListener() {
 
 			@Override
 			public boolean onLongClick(View view) {
@@ -115,4 +114,9 @@ public class RefreshActionProvider extends ActionProvider {
 		mTitle = title;
 	}
 
+	public void setRefreshButtonVisible(boolean visible){
+		
+		mRefreshButton.setVisibility(visible? View.VISIBLE : View.GONE);
+	}
+	
 }

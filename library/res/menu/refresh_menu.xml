@@ -1,7 +1,8 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:refresh="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/refresh_action_item"
-        android:actionProviderClass="com.refreshactionprovider.widget.RefreshActionProvider"
-        android:showAsAction="always"
+        refresh:actionProviderClass="com.refreshactionprovider.widget.RefreshActionProvider"
+        refresh:showAsAction="always"
         android:title="@string/refresh" />
 </menu>

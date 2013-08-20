@@ -1,12 +1,13 @@
 package com.refreshactionprovider.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.support.v4.view.MenuItemCompat;
+import android.view.ActionProvider;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.SupportMapFragment;
 import com.refreshactionprovider.R;
 import com.refreshactionprovider.widget.RefreshActionProvider;
 import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
@@ -15,7 +16,7 @@ import com.refreshactionprovider.widget.RefreshActionProvider.OnRefreshListener;
  * @author Alexander Gherschon
  * 
  */
-public abstract class RefreshListFragment extends ListFragment {
+public abstract class RefreshMapFragment extends SupportMapFragment {
 
 	private RefreshActionProvider mRefreshActionProvider;
 	private boolean mIsLoading;
@@ -31,9 +32,12 @@ public abstract class RefreshListFragment extends ListFragment {
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
 		inflater.inflate(R.menu.refresh_menu, menu);
+
 		MenuItem menuItem = menu.findItem(R.id.refresh_action_item);
 		mRefreshActionProvider = (RefreshActionProvider) MenuItemCompat.getActionProvider(menuItem);
-		mRefreshActionProvider.setTitle(menuItem.getTitle()); // doesn't seems to be possible to get that value from inside the ActionProvider
+		//ActionProvider provider = menuItem.getActionProvider();
+		//mRefreshActionProvider.setTitle(menuItem.getTitle()); // doesn't seems to be possible to get that value from inside the ActionProvider
+		mRefreshActionProvider.setRefreshButtonVisible(true); // TODO add for production
 		mRefreshActionProvider.setOnRefreshListener(new OnRefreshListener() {
 
 			@Override
@@ -42,7 +46,8 @@ public abstract class RefreshListFragment extends ListFragment {
 			}
 		});
 
-		if (mIsLoading) mRefreshActionProvider.showProgressBar();
+
+		if (mIsLoading && mRefreshActionProvider!= null) mRefreshActionProvider.showProgressBar();
 		super.onCreateOptionsMenu(menu, inflater);
 	}
 	
